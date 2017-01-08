@@ -29,7 +29,7 @@ public class Sphere : MonoBehaviour {
     void SphereMove() {
 
         gameObject.transform.position += new Vector3(SpeedX * Time.deltaTime, 0, 0);
-        SpeedX += 0.5f * Time.deltaTime;
+        SpeedX += 1f * Time.deltaTime;
 
     }
 
