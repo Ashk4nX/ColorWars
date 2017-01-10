@@ -7,6 +7,7 @@ public class Sphere : MonoBehaviour {
     private Rigidbody SphereBody;
     private Renderer SphereRenderer;
 	private Score score;
+	private ExplosionSource Explosion;
 
     public float SpeedX;
 
@@ -15,7 +16,8 @@ public class Sphere : MonoBehaviour {
 
         SphereBody = gameObject.GetComponent<Rigidbody> ();
 		SphereRenderer = gameObject.GetComponent<Renderer> ();
-
+		Explosion = gameObject.GetComponent<ExplosionSource> ();
+		Explosion.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -29,7 +31,8 @@ public class Sphere : MonoBehaviour {
     void SphereMove() {
 
         gameObject.transform.position += new Vector3(SpeedX * Time.deltaTime, 0, 0);
-        SpeedX += 1f * Time.deltaTime;
+
+        SpeedX += 0.2f * Time.deltaTime;
 
     }
 
@@ -37,12 +40,14 @@ public class Sphere : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (SphereRenderer.material.color == Color.red)
-            {
+            if (SphereRenderer.material.color == Color.red) {
+
                 SphereRenderer.material.color = Color.blue;
-            } else
-            {
+
+            } else {
+
                 SphereRenderer.material.color = Color.red;
+
             }
         }
     }
@@ -55,10 +60,13 @@ public class Sphere : MonoBehaviour {
 
             if (SphereRenderer.material.color == Color.blue)
             {
-                Destroy(Target.gameObject);
+				Explosion.enabled = true;
+				Explosion.Force = Random.Range(30f, 60f);
+    			print (Explosion.InfluenceRadius);
             }
             else
             {
+            	Explosion.Force = 0;
                 Debug.Log("GAME OVER!");
             }
         }
@@ -76,6 +84,13 @@ public class Sphere : MonoBehaviour {
                 Debug.Log("GAME OVER!");
             }
         }
+
+    }
+
+    void OnTriggerExit ()
+    {
+
+    	Explosion.enabled = false;
 
     }
 }
