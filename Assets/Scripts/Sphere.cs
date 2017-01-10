@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour {
 
+	public float SpeedX;
+
     private Rigidbody SphereBody;
     private Renderer SphereRenderer;
 	private Score score;
 	private ExplosionSource Explosion;
-
-    public float SpeedX;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,7 @@ public class Sphere : MonoBehaviour {
         SphereBody = gameObject.GetComponent<Rigidbody> ();
 		SphereRenderer = gameObject.GetComponent<Renderer> ();
 		Explosion = gameObject.GetComponent<ExplosionSource> ();
+
 		Explosion.enabled = false;
     }
 	
@@ -24,6 +25,7 @@ public class Sphere : MonoBehaviour {
 	void Update () {
 
         SphereMove();
+
         ColorChange();
 		
 	}
