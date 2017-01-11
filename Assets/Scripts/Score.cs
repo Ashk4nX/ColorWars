@@ -10,8 +10,9 @@ public class Score : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
 		myText = gameObject.GetComponent<Text> ();
+
 	}
 	
 	// Update is called once per frame

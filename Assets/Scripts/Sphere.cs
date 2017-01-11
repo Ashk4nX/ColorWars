@@ -19,6 +19,7 @@ public class Sphere : MonoBehaviour {
 		Explosion = gameObject.GetComponent<ExplosionSource> ();
 
 		Explosion.enabled = false;
+		Explosion.Force = 25f;
     }
 	
 	// Update is called once per frame
@@ -36,11 +37,13 @@ public class Sphere : MonoBehaviour {
 
         SpeedX += 0.2f * Time.deltaTime;
 
+		Explosion.Force += 1f * Time.deltaTime;
+
     }
 
     void ColorChange() {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetMouseButtonDown(0))
         {
             if (SphereRenderer.material.color == Color.red) {
 
@@ -63,12 +66,10 @@ public class Sphere : MonoBehaviour {
             if (SphereRenderer.material.color == Color.blue)
             {
 				Explosion.enabled = true;
-				Explosion.Force = Random.Range(30f, 60f);
-    			print (Explosion.InfluenceRadius);
             }
             else
             {
-            	Explosion.Force = 0;
+				Explosion.enabled = false;;
                 Debug.Log("GAME OVER!");
             }
         }
