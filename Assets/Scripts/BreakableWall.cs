@@ -13,7 +13,7 @@ public class BreakableWall : MonoBehaviour {
 
 		fractureWall.TotalMass = Random.Range (2,3);
 
-		fractureWall.ChunkConnectionStrength = Random.Range (0.2f, 0.8f);
+		fractureWall.ChunkConnectionStrength = Random.Range (0.2f, 0.5f);
 
 	}
 	

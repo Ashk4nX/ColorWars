@@ -35,7 +35,7 @@ public class Sphere : MonoBehaviour {
 
         gameObject.transform.position += new Vector3(SpeedX * Time.deltaTime, 0, 0);
 
-        SpeedX += 0.2f * Time.deltaTime;
+        SpeedX += 0.5f * Time.deltaTime;
 
 		Explosion.Force += 1f * Time.deltaTime;
 
@@ -80,10 +80,11 @@ public class Sphere : MonoBehaviour {
 
             if (SphereRenderer.material.color == Color.red)
             {
-                Destroy(Target.gameObject);
+				Explosion.enabled = true;
             }
             else
             {
+				Explosion.enabled = false;
                 Debug.Log("GAME OVER!");
             }
         }
