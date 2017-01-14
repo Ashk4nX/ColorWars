@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BlackWall : MonoBehaviour {
 
+	private Sphere sphere;
+	public Light light;
+
 	// Use this for initialization
 	void Start () {
-		
+
+		sphere = GameObject.FindObjectOfType<Sphere> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -19,7 +23,8 @@ public class BlackWall : MonoBehaviour {
 		if (Target.tag == "Sphere") {
 
 			Time.timeScale = 0.2f;
-		
+			sphere.isBlackholeEntered = true;
+			light.color = Color.black;
 		}
 	}
 

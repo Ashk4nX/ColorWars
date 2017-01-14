@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sphere : MonoBehaviour {
 
 	public float SpeedX;
+	public bool isBlackholeEntered;
 
     private Rigidbody SphereBody;
     private Renderer SphereRenderer;
@@ -59,35 +60,72 @@ public class Sphere : MonoBehaviour {
 
     void OnTriggerEnter(Collider Target) {
 
-        if (Target.tag == "BlueWall")
-        {
-            Debug.Log("Sphere Hit the Blue Wall");
+		if (isBlackholeEntered == false) {
+		
+			if (Target.tag == "BlueWall")
+			{
+				Debug.Log("Sphere Hit the Blue Wall");
 
-            if (SphereRenderer.material.color == Color.blue)
-            {
-				Explosion.enabled = true;
-            }
-            else
-            {
-				Explosion.enabled = false;;
-                Debug.Log("GAME OVER!");
-            }
-        }
+				if (SphereRenderer.material.color == Color.blue)
+				{
+					Explosion.enabled = true;
+				}
+				else
+				{
+					Explosion.enabled = false;;
+					Debug.Log("GAME OVER!");
+				}
+			}
 
-        if (Target.tag == "RedWall")
-        {
-            Debug.Log("Sphere Hit the Red Wall");
+			if (Target.tag == "RedWall")
+			{
+				Debug.Log("Sphere Hit the Red Wall");
 
-            if (SphereRenderer.material.color == Color.red)
-            {
-				Explosion.enabled = true;
-            }
-            else
-            {
-				Explosion.enabled = false;
-                Debug.Log("GAME OVER!");
-            }
-        }
+				if (SphereRenderer.material.color == Color.red)
+				{
+					Explosion.enabled = true;
+				}
+				else
+				{
+					Explosion.enabled = false;
+					Debug.Log("GAME OVER!");
+				}
+			}
+		}
+
+		if (isBlackholeEntered == true) {
+
+			if (Target.tag == "BlueWall")
+			{
+				Debug.Log("Sphere Hit the Blue Wall");
+
+				if (SphereRenderer.material.color == Color.red)
+				{
+					Explosion.enabled = true;
+				}
+				else
+				{
+					Explosion.enabled = false;;
+					Debug.Log("GAME OVER!");
+				}
+			}
+
+			if (Target.tag == "RedWall")
+			{
+				Debug.Log("Sphere Hit the Red Wall");
+
+				if (SphereRenderer.material.color == Color.blue)
+				{
+					Explosion.enabled = true;
+				}
+				else
+				{
+					Explosion.enabled = false;
+					Debug.Log("GAME OVER!");
+				}
+			}
+		
+		}
 
     }
 
