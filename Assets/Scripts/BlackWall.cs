@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BlackWall : MonoBehaviour {
 
 	private Sphere sphere;
@@ -15,8 +16,9 @@ public class BlackWall : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		
-	}
+	} 
 
 	void OnTriggerEnter (Collider Target)
 	{
@@ -33,4 +35,6 @@ public class BlackWall : MonoBehaviour {
 		Time.timeScale = 1f;
 
 	}
+
+
 }
